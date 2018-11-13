@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django FIrls Blof</title>
-</head>
-<body>
-<div>
-    <h2><a href="/">Django Girls Blog</a></h2>
-</div>
-<hr>
-{% for post in posts %}
-<div>
-    <h2><a href="">{{post.title}}</a></h2>
-    <p>published: {{post.published_date}}</p>
-    <p>{{post.text|linebreaksbr}}</p>
-</div>
-{% endfor %}
-<hr>
-<hr>
-{% for post in posts_all %}
-<div>
-    <h2><a href="">{{post.title}}</a></h2>
-    <p>published: {{post.published_date}}</p>
-    <p>{{post.text|linebreaksbr}}</p>
-</div>
-{% endfor %}
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            <p>published: {{ post.published_date }}</p>
+        </div>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
